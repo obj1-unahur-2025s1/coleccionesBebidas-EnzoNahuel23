@@ -30,8 +30,8 @@ object terere {
 }
 
 object licuado {
-    const proteina = [10, 15, 5]
-    const rendimiento = proteina.sum()
+    const proteina = [10, 5, 15]
+    method rendimiento (cantidad) = cantidad * (proteina.sum())
     method añadirProteina(prot){
         proteina.add(prot)
     }
@@ -39,10 +39,16 @@ object licuado {
 
 object aguaSaborizada{
     var property sabor = wisky
-    const rendimiento = 1 + sabor.rendimiento(2.5)
+    method rendimiento (cantidad) = cantidad * (1 + sabor.rendimiento(2.5))
 }
 
 object coctel{
-    const ingredientes = [wisky, terere, licuado]
-    const rendimiento =  if (not ingredientes.contains(cianuro)) ingredientes.sum() else 0
+    const ingredientes = [wisky, terere, licuado, cianuro]
+    const property rendimiento =  if (not ingredientes.contains(cianuro)) ingredientes.sum({e => e.rendimiento(1)}) else 0
+}
+
+object coctelSuave{
+    const ingredientes = [wisky, terere, licuado, cianuro]
+    const ingredientesSeleccionados = ingredientes.filter({e => e.rendimiento(1) > 0.5})
+    const property rendimiento = ingredientesSeleccionados.sum({e => e.rendimiento(1)})
 }
