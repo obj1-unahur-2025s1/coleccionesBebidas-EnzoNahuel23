@@ -1,4 +1,4 @@
-object tito {
+object tito{
     var cantidad = 0
     var bebida = cianuro
     method peso() = 70
@@ -11,7 +11,7 @@ object tito {
 
     method velocidad() {
         return bebida.rendimiento(cantidad)
-        * self.inerciaBase() / self.peso()
+        self.inerciaBase() / self.peso()
     }
 }
 
@@ -29,3 +29,20 @@ object terere {
     }
 }
 
+object licuado {
+    const proteina = [10, 15, 5]
+    const rendimiento = proteina.sum()
+    method añadirProteina(prot){
+        proteina.add(prot)
+    }
+}
+
+object aguaSaborizada{
+    var property sabor = wisky
+    const rendimiento = 1 + sabor.rendimiento(2.5)
+}
+
+object coctel{
+    const ingredientes = [wisky, terere, licuado]
+    const rendimiento =  if (not ingredientes.contains(cianuro)) ingredientes.sum() else 0
+}
