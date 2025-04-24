@@ -29,4 +29,22 @@ describe "test de tito" {
         assert.equals(0,tito.velocidad())
     }
 
+    test "¿Si se le agregan nuevos ingredientes al licuado luego que forme parte del coctel, afecta al rendimiento que otorga el coctel?" {
+        coctel.agregarIngrediente(licuado)
+        licuado.añadirProteina(20)
+        assert.equals(51.9, coctel.rendimiento())
+    }
+
+    test "¿Puede el coctel incluir a la vez whisky y agua saborizada con whisky?" {
+        aguaSaborizada.sabor(wisky)
+        coctel.agregarIngrediente(aguaSaborizada)
+        coctel.agregarIngrediente(wisky)
+        assert.that((coctel.ingredientes().contains(aguaSaborizada)) && (coctel.ingredientes().contains(wisky)))
+    }
+
+    test "¿Puede el coctel incluir el agua saborizada con coctel?" {
+        aguaSaborizada.sabor(coctel)
+        coctel.agregarIngrediente(aguaSaborizada)        
+        assert.that(coctel.ingredientes().contains(aguaSaborizada))
+    }
 }
