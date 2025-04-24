@@ -28,3 +28,4 @@ object terere {
         //tambien (cantidad * 0.1).max(1)
     }
 }
+
